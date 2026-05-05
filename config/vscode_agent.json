@@ -1,0 +1,80 @@
+{
+  "name": "AI Content Creator Agent",
+  "description": "VSCode agent config for the CyberShield AI Content Creator project",
+  "version": "1.0.0",
+
+  "customInstructions": "You are assisting with a Python automation project that creates cybersecurity content for CyberShield Inc. The codebase lives in src/. The knowledge bases are in knowledge_base/primary/ and knowledge_base/secondary/ as markdown files. Always preserve brand voice rules from knowledge_base/primary/brand_guidelines.md when editing prompt templates. When modifying content_pipeline.py, maintain the five-stage structure: Document → Monitor → Brief → Publish → Iterate.",
+
+  "tools": {
+    "terminal": true,
+    "fileSystem": true,
+    "search": true
+  },
+
+  "context": {
+    "include": [
+      "src/**/*.py",
+      "knowledge_base/**/*.md",
+      "templates/**/*.md",
+      "requirements.txt",
+      "README.md"
+    ],
+    "exclude": [
+      "output/**",
+      ".env",
+      "__pycache__/**",
+      "*.pyc"
+    ]
+  },
+
+  "tasks": {
+    "runPipeline": {
+      "command": "cd ${workspaceFolder} && python src/main.py run --topic \"${input:topic}\" --template ${input:template}",
+      "inputs": [
+        {
+          "id": "topic",
+          "type": "promptString",
+          "description": "Content topic or angle",
+          "default": "Why alert fatigue is a leadership problem"
+        },
+        {
+          "id": "template",
+          "type": "pickString",
+          "description": "Select content template",
+          "options": ["blog_ciso", "blog_analyst", "linkedin"],
+          "default": "blog_ciso"
+        }
+      ]
+    },
+    "monitor": {
+      "command": "cd ${workspaceFolder} && python src/main.py monitor"
+    },
+    "kbStatus": {
+      "command": "cd ${workspaceFolder} && python src/main.py kb-status"
+    },
+    "listTemplates": {
+      "command": "cd ${workspaceFolder} && python src/main.py list-templates"
+    },
+    "install": {
+      "command": "pip install -r ${workspaceFolder}/requirements.txt"
+    }
+  },
+
+  "agentWorkflow": {
+    "preferredApproach": "When asked to generate content: (1) check kb-status first, (2) run monitor if needed, (3) run the pipeline with appropriate template",
+    "fileModificationRules": [
+      "Never modify .env directly — use os.getenv() patterns",
+      "When adding new templates, register them in TEMPLATE_REGISTRY in prompt_templates.py",
+      "New knowledge base docs must be .md files in knowledge_base/primary/ or secondary/",
+      "Run kb-status after adding new documents to verify ingestion"
+    ],
+    "testingApproach": "Test each stage independently before running the full pipeline. Use --skip-monitor and --no-review flags during development."
+  },
+
+  "devNotes": {
+    "apiKeys": "Set ANTHROPIC_API_KEY in .env file. Never commit .env.",
+    "model": "Default is claude-opus-4-5. Override with LLM_MODEL env var.",
+    "outputDir": "All generated content saves to output/ with timestamps.",
+    "knowledgeBaseUpdates": "Add new .md files to knowledge_base/ directories. DocumentProcessor auto-discovers them on next run."
+  }
+}
