@@ -67,7 +67,7 @@ class ContentPipeline:
         os.makedirs(output_dir, exist_ok=True)
 
         print("\n" + "="*60)
-        print("  AI CONTENT CREATOR — CyberShield Inc.")
+        print("  AI CONTENT CREATOR — IronVeil Security")
         print("="*60)
 
         # Stage 1: Document — Initialize knowledge base

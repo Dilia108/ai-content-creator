@@ -23,7 +23,7 @@ This system implements a five-stage content creation pipeline that produces cont
 cd ai-content-creator
 
 # 2. Install dependencies
-pip install -r requirements.txt
+python -m pip install -r requirements.txt
 
 # 3. Set your API key
 cp .env.example .env
@@ -37,6 +37,9 @@ python src/main.py monitor          # Stage 2: market analysis
 python src/main.py brief --topic "Zero trust for mid-market companies"  # Stage 3
 python src/main.py kb-status        # Check knowledge base
 python src/main.py list-templates   # See available templates
+
+# 6. Launch the Gradio UI
+python src/app.py
 ```
 
 ---

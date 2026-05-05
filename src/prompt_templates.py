@@ -43,7 +43,7 @@ class PromptTemplate:
 # SYSTEM PROMPTS — Define the AI's persona and constraints
 # ──────────────────────────────────────────────────────────────
 
-BRAND_PERSONA_SYSTEM = """You are the senior content strategist for CyberShield Inc., a cybersecurity company
+BRAND_PERSONA_SYSTEM = """You are the senior content strategist for a cybersecurity company
 serving mid-market enterprises. You write with deep technical credibility but always translate
 complexity into operational clarity.
 
@@ -277,7 +277,7 @@ MONITOR_TEMPLATE = PromptTemplate(
     format=ContentFormat.CONTENT_BRIEF,
     audience=AudienceType.CISO,
     system_prompt=BRAND_PERSONA_SYSTEM,
-    user_prompt_template="""Analyze the current market context and identify content opportunities for CyberShield Inc.
+    user_prompt_template="""Analyze the current market context and identify content opportunities for IronVeil Security.
 
 MARKET RESEARCH DATA:
 {market_context}
