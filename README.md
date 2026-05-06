@@ -53,7 +53,7 @@ ai-content-creator/
 │   ├── knowledge_base.py        # Primary and secondary KB management + retrieval
 │   ├── prompt_templates.py      # Advanced prompt templates with brand constraints
 │   ├── content_pipeline.py      # Five-stage pipeline orchestration
-│   ├── llm_integration.py       # Anthropic API client with retry + output management
+│   ├── llm_integration.py       # OpenAI API client with retry + output management
 │   └── main.py                  # CLI entry point
 │   └── app.py                   # Gradio UI
 ├── knowledge_base/
@@ -157,7 +157,7 @@ The `config/vscode_agent.json` defines:
 - Pre-built task definitions for common commands
 - Workflow guidelines for how the agent should approach content generation requests
 
-To use with VSCode Copilot or Claude in VSCode, reference this config file in your workspace settings.
+To use with VSCode, reference this config file in your workspace settings.
 
 ---
 
@@ -165,8 +165,8 @@ To use with VSCode Copilot or Claude in VSCode, reference this config file in yo
 
 | Variable | Required | Default | Description |
 |---|---|---|---|
-| `OPENAI_API_KEY` | ✅ Yes | — | Your Anthropic API key |
-| `LLM_MODEL` | No | `claude-opus-4-5` | Override the default model |
+| `OPENAI_API_KEY` | ✅ Yes | — | Your OpenAI API key |
+| `LLM_MODEL` | No | `gpt-4o-mini` | Override the default model |
 
 ---
 
