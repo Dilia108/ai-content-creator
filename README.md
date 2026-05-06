@@ -1,6 +1,8 @@
-# AI Content Creator — CyberContent
+# AI Content Creator — CybContent
 
 A Python automation framework for generating brand-aligned, non-generic cybersecurity content using LLM APIs and a two-tier knowledge base architecture.
+
+* **Client:** IronVeil Security
 
 ---
 
