@@ -1,4 +1,4 @@
-# AI Content Creator — CybContent
+# AI Content Creator — CyberContent
 
 A Python automation framework for generating brand-aligned, non-generic cybersecurity content using LLM APIs and a two-tier knowledge base architecture.
 
