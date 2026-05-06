@@ -1,4 +1,4 @@
-# AI Content Creator — CyberShield Inc.
+# AI Content Creator — CyberContent
 
 A Python automation framework for generating brand-aligned, non-generic cybersecurity content using LLM APIs and a two-tier knowledge base architecture.
 
@@ -27,7 +27,7 @@ python -m pip install -r requirements.txt
 
 # 3. Set your API key
 cp .env.example .env
-# Edit .env and add your ANTHROPIC_API_KEY
+# Edit .env and add your OPENAI_API_KEY
 
 # 4. Run the full pipeline
 python src/main.py run --topic "Why alert fatigue is a leadership failure, not a tooling problem"
@@ -55,6 +55,7 @@ ai-content-creator/
 │   ├── content_pipeline.py      # Five-stage pipeline orchestration
 │   ├── llm_integration.py       # Anthropic API client with retry + output management
 │   └── main.py                  # CLI entry point
+│   └── app.py                   # Gradio UI
 ├── knowledge_base/
 │   ├── primary/                 # Company-specific documents
 │   │   ├── brand_guidelines.md  # Voice, tone, approved terminology
@@ -106,12 +107,12 @@ Takes feedback (from human review or provided directly) and produces a refined v
 
 | Template | Audience | Format | Use Case |
 |---|---|---|---|
-| `blog_ciso` | CISO / Security Director | Blog post | Thought leadership, 1500–2000 words |
-| `blog_analyst` | SOC Analyst / Engineer | Blog post | Technical deep-dives, practitioner focus |
-| `linkedin` | CISO / Security Leader | LinkedIn post | 150–250 word engagement posts |
+| `blog_post_ciso` | CISO / Security Director | Blog post | Thought leadership, 1500–2000 words |
+| `blog_post_analyst` | SOC Analyst / Engineer | Blog post | Technical deep-dives, practitioner focus |
+| `linkedin_thought_leadership` | CISO / Security Leader | LinkedIn post | 150–250 word engagement posts |
 | `content_brief` | Internal | Brief | Planning and scoping |
-| `monitor` | Internal | Report | Weekly market opportunity analysis |
-| `iterate` | Internal | Refinement | Feedback-driven content revision |
+| `monitor_trends` | Internal | Report | Weekly market opportunity analysis |
+| `iterate_and_refine` | Internal | Refinement | Feedback-driven content revision |
 
 ---
 
@@ -164,7 +165,7 @@ To use with VSCode Copilot or Claude in VSCode, reference this config file in yo
 
 | Variable | Required | Default | Description |
 |---|---|---|---|
-| `ANTHROPIC_API_KEY` | ✅ Yes | — | Your Anthropic API key |
+| `OPENAI_API_KEY` | ✅ Yes | — | Your Anthropic API key |
 | `LLM_MODEL` | No | `claude-opus-4-5` | Override the default model |
 
 ---
@@ -175,19 +176,19 @@ To use with VSCode Copilot or Claude in VSCode, reference this config file in yo
 # Run full pipeline — CISO blog post on alert fatigue
 python src/main.py run \
   --topic "Alert fatigue is a leadership problem, not a tooling problem" \
-  --template blog_ciso \
+  --template blog_post_ciso \
   --word-count 1800
 
 # Run full pipeline — SOC analyst post on lateral movement detection
 python src/main.py run \
   --topic "Detecting lateral movement in Microsoft environments" \
-  --template blog_analyst \
+  --template blog_post_analyst \
   --no-review
 
 # Quick LinkedIn post
 python src/main.py run \
   --topic "The hidden cost of your current SIEM setup" \
-  --template linkedin \
+  --template linkedin_thought_leadership \
   --skip-monitor \
   --no-review
 
