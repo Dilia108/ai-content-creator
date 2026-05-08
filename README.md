@@ -75,7 +75,19 @@ ai-content-creator/
 ├── .env.example                 # Copy to .env and fill in API key
 └── README.md
 
-Branch/
+Cohere branch
+
+├── src/
+│   ├── document_processor.py    # Markdown ingestion, parsing, section extraction
+│   ├── knowledge_base.py        # Primary and secondary KB management + retrieval
+│   ├── prompt_templates.py      # Advanced prompt templates with brand constraints
+│   ├── content_pipeline.py      # Five-stage pipeline orchestration
+│   ├── llm_integration.py       # Cohere client with retry + output management
+│   ├── publish_hashnode.py      # 
+│   ├── publish_linkedin.py      # 
+│   ├── trend_monitor.py         # 
+│   └── main.py                  # CLI entry point calling the Hashnode API
+
 
 
 ```
