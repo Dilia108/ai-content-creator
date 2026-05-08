@@ -83,9 +83,9 @@ Cohere branch
 │   ├── prompt_templates.py      # Advanced prompt templates with brand constraints
 │   ├── content_pipeline.py      # Five-stage pipeline orchestration
 │   ├── llm_integration.py       # Cohere client with retry + output management
-│   ├── publish_hashnode.py      # 
-│   ├── publish_linkedin.py      # 
-│   ├── trend_monitor.py         # 
+│   ├── publish_hashnode.py      # API to publishing platform Hashnote
+│   ├── publish_linkedin.py      # API to publishing platform Hashnote
+│   ├── trend_monitor.py         # Market Trend Monitor that offers 5 optional trending topics when creating article
 │   └── main.py                  # CLI entry point calling the Hashnode API
 
 
