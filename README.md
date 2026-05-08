@@ -74,13 +74,10 @@ ai-content-creator/
 ├── requirements.txt
 ├── .env.example                 # Copy to .env and fill in API key
 └── README.md
-├── src for Hashnote/LinkedIN APIs/ # set up with Cohere
-│   ├── document_processor.py    # Markdown ingestion, parsing, section extraction
-│   ├── knowledge_base.py        # Primary and secondary KB management + retrieval
-│   ├── prompt_templates.py      # Advanced prompt templates with brand constraints
-│   ├── content_pipeline.py      # Five-stage pipeline orchestration
-│   ├── llm_integration.py       # Cohere API client with retry + output management
-│   └── main.py                  # CLI entry point calling Hashnote API
+
+Branch/
+
+
 ```
 
 ---
